@@ -225,49 +225,57 @@
             <p>在下方输入网址，查看嵌入效果：</p>
             
             <div class="url-input">
-                <input type="text" id="url-input" placeholder="输入网址，例如：https://example.com" value="https://example.com">
-                <button id="load-btn">加载</button>
+                <input type="text" class="url-input-field" placeholder="输入网址，例如：https://example.com" value="https://example.com">
+                <button class="load-btn">加载</button>
             </div>
             <div class="iframe-container">
-                <iframe id="demo-iframe" src="https://example.com"></iframe>
+                <iframe class="demo-iframe" src="https://example.com"></iframe>
             </div>
             
             <div class="url-input">
-                <input type="text" id="url-input" placeholder="输入网址，例如：https://example.com" value="https://example.com">
-                <button id="load-btn">加载</button>
+                <input type="text" class="url-input-field" placeholder="输入网址，例如：https://example.com" value="https://example.com">
+                <button class="load-btn">加载</button>
             </div>
             <div class="iframe-container">
-                <iframe id="demo-iframe" src="https://example.com"></iframe>
+                <iframe class="demo-iframe" src="https://example.com"></iframe>
             </div>
         
             <div class="url-input">
-                <input type="text" id="url-input" placeholder="输入网址，例如：https://example.com" value="https://example.com">
-                <button id="load-btn">加载</button>
+                <input type="text" class="url-input-field" placeholder="输入网址，例如：https://example.com" value="https://example.com">
+                <button class="load-btn">加载</button>
             </div>
             
             <div class="iframe-container">
-                <iframe id="demo-iframe" src="https://example.com"></iframe>
+                <iframe class="demo-iframe" src="https://example.com"></iframe>
             </div>
         </section>
     </div>
     
     <footer>
-        <p>© 2025 网页嵌入方法示例 | 此网页作者为李岩卓请勿盗用</p>
+        <p>© 2025 网页嵌入方法示例 | 网站作者为lyz130603请勿盗用</p>
     </footer>
 
     <script>
-        document.getElementById('load-btn').addEventListener('click', function() {
-            const url = document.getElementById('url-input').value;
-            if (url) {
-                document.getElementById('demo-iframe').src = url;
-            }
-        });
-        
-        // 按Enter键也可以加载
-        document.getElementById('url-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('load-btn').click();
-            }
+        // 获取所有按钮和输入框
+        const loadButtons = document.querySelectorAll('.load-btn');
+        const inputFields = document.querySelectorAll('.url-input-field');
+        const iframes = document.querySelectorAll('.demo-iframe');
+
+        // 为每个按钮绑定点击事件
+        loadButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+                const url = inputFields[index].value;
+                if (url) {
+                    iframes[index].src = url;
+                }
+            });
+            
+            // 按Enter键也可以加载
+            inputFields[index].addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    button.click();
+                }
+            });
         });
     </script>
 </body>
